@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Source+Code+Pro:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">    
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        :root{
+            --card_border :linear-gradient(to left, #b63ad5d7, #48bad6d7)  ;
+        }
+
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        header{
+            background-image: var(--card_border);
+            color: white;
+        }
+
+        header a{
+            color: white;
+            font-weight: 700;
+        }
+
+        body{   overflow: auto; }
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        footer{
+            height: 7vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            font-family: 'Source Code Pro', monospace;
+        }
+        main{
+            display: flex;
+            font-family: 'Source Code Pro', monospace;
+            color: rgb(114, 114, 114);
+        } 
+
+        .border__logo{   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); }
+
+        p{  margin: 0;    }
+
+        a{    text-decoration: none;    }
+
+        .container__inputs{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .datepickr{
+                box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5) ;
+                border: solid 3px transparent;
+                background-image: var(--card_border),var(--card_border);
+                background-origin: border-box;
+                background-clip: content-box, border-box;
+                box-shadow: 2px 1000px 1px #fff inset !important;
+                outline: none ;
+        }
+
+
+
+        @media only screen and (max-width: 768px){
+            body{
+                display: flex;
+                flex-direction: column;
+            }
+        
+            .header{
+                padding: 0.5rem;
+                height: 8vh;
+                font-size: 3.5vw;
+            }
+        
+            main{
+                margin: 1rem;
+                padding: 0.5rem;
+                flex-direction: column;
+                height: 82vh;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+                border: 4px solid;
+                border-image-slice: 1;
+                border-image-source: var(--card_border);
+            }
+
+            .container__logo{
+                height: 25vh;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: center;
+                padding: 0.5rem;
+            }
+            h1{
+                font-size: 1.5rem;
+                margin: 0;
+            }
+            .border__logo{
+                margin: 1rem;
+                padding: 0.5rem;
+                background-image: var(--card_border);
+                border-radius: 1rem;
+            }
+        
+            .logo{
+                padding: 0.5rem;
+                color: white;
+                border: 0.2rem solid white;
+                border-radius: 1rem;
+                font-size: 7vw;
+            }
+            .links{
+                display: none;
+            }
+
+            .linksfo{
+                width: 50vw;
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                justify-content: space-between;
+            }
+        
+            .container__form{
+                height: 65vh;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                justify-content: space-around;
+            }
+        
+            h3{
+                font-size: 1rem;
+                margin: 0;
+            }
+        
+            .container__inputs{
+                margin: 1rem;
+            }
+        
+            input{
+                height: 5vh;
+                margin: 1rem ;
+                text-align: center;
+                border-radius: 10px;
+            }
+        
+            .datepickr{ width: 80vw; }
+        
+            .calc{
+                width: 50vw!important;
+                background-color: white; 
+                border-radius: 10px;
+                color: rgb(114, 114, 114);
+                box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+                border: solid 3px transparent;
+                background-image: var(--card_border),var(--card_border);
+                background-origin: border-box;
+                background-clip: content-box, border-box;
+                box-shadow: 2px 1000px 1px #fff inset;
+            }
+        
+            .calc:active {
+                box-shadow: none;
+                color: white;
+            }
+        
+            .result{    padding: 1rem; }
+            .result p{
+                font-size: 1rem;
+            }
+
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* For desktop: */
+            .header{
+                padding: 2rem;
+                height: 10vh;
+                font-size: 1.2vw;
+            }
+        
+            footer{ display: none; }
+        
+            main{
+                height: 90vh;
+                padding: 3rem;
+            }
+        
+            .container__logo{
+                margin: 1rem;
+                width: 40vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+            }
+        
+            h1{
+                font-size: 4vw;
+                margin: 0;
+            }
+            .border__logo{
+                margin: 2rem;
+                padding: 1.5rem;
+                background-image: var(--card_border);
+                border-radius: 4rem;
+            }
+        
+            .logo{
+                padding: 1.5rem;
+                color: white;
+                border: 0.3rem solid white;
+                border-radius: 4rem;
+                font-size: 7vw;
+            }
+        
+            .links{
+                width: 60%;
+                display: flex;
+                justify-content: space-around;
+                font-size: 1.5vw;
+            }
+        
+            .container__form{
+                margin: 2rem;
+                padding: 3vw;
+                width: 60vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                text-align: center;
+            
+                border-radius: 1rem;
+                background-color: #fff;
+                border: 0.5rem solid transparent;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+
+            }       
+        
+            .container__form:hover{
+                background-color: white; 
+                background-image: var(--card_border),var(--card_border);
+                background-origin: border-box;
+                background-clip: content-box, border-box;
+                box-shadow: 2px 1000px 1px #fff inset;
+            }
+        
+            h3{
+                color: #48bad6d7;
+                font-size: 1.5vw;
+                font-weight: 700;
+                width: 40vw;
+                margin: 0;
+            }
+        
+            input{
+                border: 2rem solid;
+                height: 5.2vh;
+                margin: 1rem;
+                text-align: center;
+            }
+        
+            .datepickr{
+                width: 30vw;
+                border-radius: 10px;
+            }
+        
+            .calc {
+                width: 15vw!important;
+                background-color: white; 
+                border-radius: 10px;
+                color: rgb(114, 114, 114);
+                box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+                border: solid 3px transparent;
+                background-image: var(--card_border),var(--card_border);
+                background-origin: border-box;
+                background-clip: content-box, border-box;
+                box-shadow: 2px 1000px 1px #fff inset;
+            }
+
+            .calc:hover {
+                box-shadow: none;
+                color: white;
+            }
+            .calc:active {
+                background-color: rgb(37, 37, 37);
+                border: solid 4px rgb(236, 235, 235);
+            }
+        
+            .result{
+                width: 40vw;
+            }
+        
+            .result p{
+                font-size: 1.3vw;
+                margin: 0;
+            }
+        
+        }
+    </style>
+    <header>
+        <div class="header"><p>Create by Darwin Esteban Cifuentes</p><a href="www.linkedin.com/in/darwin-esteban-cifuentes">Contact me</a></div>
+    </header>
+    <main>
+        <section class="container__logo">
+            <h1 class="title">MathBirthDays</h1>
+            <div class="border__logo">
+                <div class="logo">10<sup>n</sup></div>
+            </div>
+            <div class="links">
+                <a href="https://github.com/TrumanEc">GitHub</a>
+                <p>|</p>
+                <a href="https://github.com/TrumanEc/mathBirthday.com">Code</a>
+            </div>
+        </section>
+        <section class="container__form">
+            <h3 class="info">Insert yor birth date to get the date of your next MathBirthDay. </h3>
+            <div class="container__inputs">
+                <input class="datepickr " type="date" placeholder="Select Date.."/>
+                <input type="button" class="calc " value="Calculate">
+            </div>
+            <div class="result">
+                <p>Your next Math Birth Date will appear here.</p>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        <div class="linksfo">
+            <a href="https://github.com/TrumanEc">GitHub</a>
+            <p>|</p>
+            <a href="https://github.com/TrumanEc/mathBirthday.com">Code</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+        const calc = document.querySelector(".calc");
+
+        calc.addEventListener("click", ()=>{
+            const bd = document.querySelector('.datepickr').value;
+            if (bd == null || bd == undefined || bd == "") {
+                alert('pendejo')
+            }else{
+                console.log(bd)
+                nextBirthMath(bd)
+            }
+        });
+
+
+
+        function nextBirthMath(b){
+            const birthDate = new Date(b);
+            const nowDate = new Date();
+            nowDate.setHours(0, 0, 0, 0);
+            const dayMilli = 24 * 60 * 60 * 1000;
+            let milliSecElapsed = Math.abs(birthDate.getTime() - nowDate.getTime());
+            let daysElapsed = Math.round(milliSecElapsed/dayMilli);
+
+            
+
+            let i = 0;
+            while(true){
+                i++;
+                let totalDays = Math.pow(10,i);
+                if (daysElapsed < totalDays ) {
+                    let nextDate = (totalDays * dayMilli) - daysElapsed * dayMilli;
+                    const dateNextBirth = new Date(nowDate.getTime() + nextDate);
+                    const dateHtml = `<p style="display:inline;">is in</p> <p style="color: #b63ad5d7; display:inline;">  ${dateNextBirth.toDateString()} </p>`;
+                    const message = `<p>Your next Math Birth Day 10<sup>${i}</sup> (${totalDays} days)</p>`;
+                    document.querySelector('.result').innerHTML =  message + dateHtml;
+                    break;
+                }
+            }
+        }
+        flatpickr(".datepickr", {
+            maxDate: "today",
+            altInput: true,
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d",
+            disableMobile: "true"
+        });
+    </script>
+    
+
+</body>
+</html>
